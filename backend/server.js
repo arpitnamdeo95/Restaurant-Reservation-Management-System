@@ -1,4 +1,7 @@
-require('dotenv').config();
+// Load .env file only in local development (Render provides env vars directly)
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
