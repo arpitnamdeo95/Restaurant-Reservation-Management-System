@@ -29,21 +29,18 @@ const seedDatabase = async () => {
         console.log('Seeded tables.');
 
         // Seed Admin User
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash('admin123', salt);
         await User.create({
             name: 'Admin User',
             email: 'admin@example.com',
-            password: hashedPassword,
+            password: 'admin123',
             role: 'admin'
         });
         
         // Seed Customer User
-        const customerPassword = await bcrypt.hash('customer123', salt);
         await User.create({
             name: 'Customer User',
             email: 'customer@example.com',
-            password: customerPassword,
+            password: 'customer123',
             role: 'customer'
         });
         console.log('Seeded users.');
