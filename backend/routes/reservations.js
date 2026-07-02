@@ -82,4 +82,52 @@ router.delete('/:id', protect, async (req, res) => {
     }
 });
 
+// Update a reservation (Admin only)
+router.put('/:id', protect, adminOnly, async (req, res) => {
+    try {
+        const { tableId, date, timeSlot, guests } = req.body;
+        const reservation = await Reservation.findById(req.params.id);
+        
+        if (!reservation) {
+            return res.status(404).json({ message: 'Reservation not found' });
+        }
+
+        // Verify capacity and conflict if table/date/time is changed
+        if (tableId || date || timeSlot || guests) {
+            const checkTableId = tableId || reservation.table;
+            const checkDate = date || reservation.date;
+            const checkTimeSlot = timeSlot || reservation.timeSlot;
+            const checkGuests = guests || reservation.guests;
+
+            const table = await Table.findById(checkTableId);
+            if (!table) return res.status(404).json({ message: 'Table not found' });
+            if (table.capacity < checkGuests) {
+                return res.status(400).json({ message: `Table capacity (${table.capacity}) is less than guests (${checkGuests})` });
+            }
+
+            // Conflict check excluding the current reservation
+            const conflict = await Reservation.findOne({
+                _id: { $ne: reservation._id },
+                table: checkTableId,
+                date: checkDate,
+                timeSlot: checkTimeSlot
+            });
+
+            if (conflict) {
+                return res.status(400).json({ message: 'Table is already reserved for this time slot' });
+            }
+
+            if (tableId) reservation.table = tableId;
+            if (date) reservation.date = date;
+            if (timeSlot) reservation.timeSlot = timeSlot;
+            if (guests) reservation.guests = guests;
+        }
+
+        await reservation.save();
+        res.json(reservation);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 module.exports = router;
