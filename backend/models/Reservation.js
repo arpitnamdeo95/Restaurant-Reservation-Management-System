@@ -8,4 +8,6 @@ const reservationSchema = new mongoose.Schema({
     guests: { type: Number, required: true }
 }, { timestamps: true });
 
+reservationSchema.index({ table: 1, date: 1, timeSlot: 1 }, { unique: true });
+
 module.exports = mongoose.model('Reservation', reservationSchema);

@@ -5,17 +5,17 @@ const { protect, adminOnly } = require('../middleware/authMiddleware');
 const router = express.Router();
 
 // GET all tables
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     try {
         const tables = await Table.find({});
         res.json(tables);
     } catch (error) {
-        res.status(500).json({ message: 'Server error' });
+        next(error);
     }
 });
 
 // POST a new table (Admin only)
-router.post('/', protect, adminOnly, async (req, res) => {
+router.post('/', protect, adminOnly, async (req, res, next) => {
     try {
         const { tableNumber, capacity } = req.body;
         const table = await Table.create({ tableNumber, capacity });
@@ -24,7 +24,7 @@ router.post('/', protect, adminOnly, async (req, res) => {
         if (error.code === 11000) {
             return res.status(400).json({ message: 'Table number already exists' });
         }
-        res.status(500).json({ message: 'Server error' });
+        next(error);
     }
 });
 
