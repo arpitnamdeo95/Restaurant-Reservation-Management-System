@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservation System - Project Submission Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #4f46e5;
+            --text-main: #1f2937;
+            --text-light: #4b5563;
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 50px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin-top: 25px;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        p, li {
+            color: var(--text-light);
+            font-size: 0.975rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .badge-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #c7d2fe;
+        }
+
+        .links-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .links-table th, .links-table td {
+            border: 1px solid var(--border);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .links-table th {
+            background-color: #f3f4f6;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background-color: #f3f4f6;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .alert {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .alert p {
+            margin: 0;
+            color: #1e3a8a;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .container {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+            button, .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Restaurant Reservation System</h1>
+            <p class="subtitle">MERN Stack Assignment Submission & Technical Documentation Document</p>
+            <div class="badge-container">
+                <span class="badge">MongoDB Atlas</span>
+                <span class="badge">Express.js</span>
+                <span class="badge">React & Vite</span>
+                <span class="badge">Node.js</span>
+                <span class="badge">JWT Auth</span>
+            </div>
+        </header>
+
+        <h2>1. Executive Summary & Deliverables</h2>
+        <p>This document presents the complete submission report for the Restaurant Reservation System developed for the intern assignment. The codebase is fully implemented, audited for security vulnerabilities, optimized for double-booking prevention, styled with a modern glassmorphic theme, and deployed on cloud environments.</p>
+
+        <table class="links-table">
+            <thead>
+                <tr>
+                    <th>Asset</th>
+                    <th>URL Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Live App UI (Vercel)</strong></td>
+                    <td><a href="https://restaurant-reservation-management-s-seven.vercel.app" target="_blank">https://restaurant-reservation-management-s-seven.vercel.app</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Backend API Server (Render)</strong></td>
+                    <td><a href="https://rrs-backend-fd70.onrender.com" target="_blank">https://rrs-backend-fd70.onrender.com</a></td>
+                </tr>
+                <tr>
+                    <td><strong>GitHub Repository</strong></td>
+                    <td><a href="https://github.com/arpitnamdeo95/Restaurant-Reservation-Management-System" target="_blank">https://github.com/arpitnamdeo95/Restaurant-Reservation-Management-System</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="alert">
+            <p>💡 <strong>Evaluator Credentials (Auto-Filled on Live Site Switcher):</strong><br>
+            • Customer Account: <code>customer@example.com</code> / <code>customer123</code><br>
+            • Administrator Account: <code>admin@example.com</code> / <code>admin123</code></p>
+        </div>
+
+        <h2>2. Features Implemented</h2>
+        <h3>A. Authentication & Security (JWT)</h3>
+        <ul>
+            <li><strong>Enforced Customer Registrations:</strong> The public <code>/register</code> endpoint restricts new accounts strictly to the <code>customer</code> role, completely ignoring role-selection tampering in payloads.</li>
+            <li><strong>Seeded Administrator Model:</strong> Administrator accounts can only be generated through database seeds or direct database additions, securing the route from illegal escalations.</li>
+            <li><strong>Role-aware Route Guards:</strong> Client routes redirect unauthorized guests to appropriate contexts, while backend API middleware enforces JWT validation (<code>protect</code>) and administrator clearance checks (<code>adminOnly</code>).</li>
+        </ul>
+
+        <h3>B. Advanced Reservation Availability Check</h3>
+        <ul>
+            <li><strong>Double-Booking Prevention Check:</strong> The API runs a pre-check query to verify if the selected table is occupied for the specified date and time block.</li>
+            <li><strong>Database Compound Constraints:</strong> A compound unique index has been defined on the Mongoose Reservation Schema (<code>{table, date, timeSlot}</code>) which triggers a MongoDB duplicate key collision failure to handle parallel processing race conditions safely.</li>
+            <li><strong>Table Capacity Validation:</strong> Guests limits are checked against the selected table's absolute capacity prior to slot reservation.</li>
+        </ul>
+
+        <h3>C. Dynamic Administrator Dashboard Panel</h3>
+        <ul>
+            <li><strong>Full View & Filter:</strong> Displays all active table reservations across all customers with date-specific filter capability.</li>
+            <li><strong>Reservation Cancellation:</strong> Allows the admin to cancel any reservation.</li>
+            <li><strong>Edit & Reassign Panel:</strong> Implements a visual glassmorphic edit modal popup allowing administrators to change the assigned table, time slot, guest counts, and dates. All safety checks run upon modification to prevent collisions.</li>
+        </ul>
+
+        <h2>3. Technical Fixes & Code Improvements Audited</h2>
+        <p>A comprehensive audit pass was performed to clean the codebase and ensure high production readiness:</p>
+        <ul>
+            <li><strong>Input Validation:</strong> Integrated checks to validate date format (<code>YYYY-MM-DD</code>), check valid time slot limits, and verify positive integer values (>0) for guests, throwing detailed <code>400 Bad Request</code> messages on failure.</li>
+            <li><strong>Falsy Guest Bug Resolution:</strong> Replaced simple truthiness updates (<code>if (guests)</code>) with explicit <code>!== undefined</code> checks to allow users to scale guest counts to valid numbers without updates silently skipping.</li>
+            <li><strong>Centralized Error Handling:</strong> Refactored route catch-blocks to use <code>next(error)</code> instead of dead generic internal Server Error handlers, allowing centralized Express middleware to intercept and log unexpected crashes.</li>
+            <li><strong>Single-Page Routing Fix:</strong> Configured a Vercel routing rule (<code>vercel.json</code>) directing client requests to <code>/index.html</code>, resolving 404 page-refresh failures.</li>
+        </ul>
+
+        <h2>4. Folder Structure Architecture</h2>
+        <pre><code>Restaurant-Reservation-Management-System/
+├── backend/
+│   ├── models/            # User, Table, Reservation Mongoose Models
+│   ├── middleware/        # authMiddleware.js (JWT route checks)
+│   ├── routes/            # auth.js, reservations.js, tables.js API routes
+│   ├── seed.js            # Seeding tables and default test users
+│   └── server.js          # Express initialization & Global error handlers
+└── frontend/
+    ├── src/
+    │   ├── context/       # AuthContext.jsx global auth handler
+    │   ├── pages/         # Login, Register, Dashboard, AdminDashboard views
+    │   ├── api.js         # Axios interceptor mapping for headers
+    │   └── index.css      # Custom dark/mesh premium glassmorphism styling
+    └── vercel.json        # routing configuration rules</code></pre>
+
+        <h2>5. Instructions to Export this Document to PDF</h2>
+        <ol>
+            <li>Open this file (<code>DOCUMENTATION.html</code>) in any modern web browser (Google Chrome, Microsoft Edge, Safari).</li>
+            <li>Press <code>Ctrl + P</code> (on Windows) or <code>Cmd + P</code> (on macOS) to open the print options dialog.</li>
+            <li>Select <strong>"Save as PDF"</strong> as the destination printer.</li>
+            <li>Under Options, check <strong>"Background graphics"</strong> to capture styling accurately, and set Layout to <strong>"Portrait"</strong>.</li>
+            <li>Click <strong>Save</strong> to export a clean, professional PDF file ready for submission to your recruiter!</li>
+        </ol>
+    </div>
+</body>
+</html>
