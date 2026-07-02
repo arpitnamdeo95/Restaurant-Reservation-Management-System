@@ -52,11 +52,11 @@ const AdminDashboard = () => {
                     </div>
                 </div>
                 
-                <div style={{marginTop: '1.5rem', overflowX: 'auto'}}>
-                    <table style={{width: '100%', borderCollapse: 'collapse', textAlign: 'left'}}>
+                <div className="table-container" style={{marginTop: '1.5rem'}}>
+                    <table>
                         <thead>
-                            <tr style={{borderBottom: '2px solid var(--border-color)'}}>
-                                <th style={{padding: '1rem 0'}}>Customer</th>
+                            <tr>
+                                <th>Customer</th>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Table</th>
@@ -67,18 +67,20 @@ const AdminDashboard = () => {
                         <tbody>
                             {reservations.length === 0 ? (
                                 <tr>
-                                    <td colSpan="6" style={{padding: '1rem 0', color: 'var(--text-muted)'}}>No reservations found.</td>
+                                    <td colSpan="6" style={{color: 'var(--text-muted)', textAlign: 'center'}}>No reservations found.</td>
                                 </tr>
                             ) : (
                                 reservations.map(res => (
-                                    <tr key={res._id} style={{borderBottom: '1px solid var(--border-color)'}}>
-                                        <td style={{padding: '1rem 0'}}>
-                                            <div>{res.user?.name}</div>
+                                    <tr key={res._id}>
+                                        <td>
+                                            <div style={{fontWeight: '500', color: 'var(--text-main)'}}>{res.user?.name}</div>
                                             <div style={{fontSize: '0.85rem', color: 'var(--text-muted)'}}>{res.user?.email}</div>
                                         </td>
                                         <td>{res.date}</td>
-                                        <td>{res.timeSlot}</td>
-                                        <td>Table {res.table?.tableNumber} (Cap: {res.table?.capacity})</td>
+                                        <td>
+                                            <span className="status-pill success">{res.timeSlot}</span>
+                                        </td>
+                                        <td>Table {res.table?.tableNumber} <br/><span style={{fontSize: '0.8rem', color: 'var(--text-muted)'}}>Cap: {res.table?.capacity}</span></td>
                                         <td>{res.guests}</td>
                                         <td>
                                             <button className="btn btn-danger" style={{padding: '0.5rem 1rem'}} onClick={() => handleCancel(res._id)}>Cancel</button>

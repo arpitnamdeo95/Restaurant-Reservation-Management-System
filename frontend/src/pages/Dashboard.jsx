@@ -115,11 +115,29 @@ const Dashboard = () => {
                     ) : (
                         <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                             {reservations.map(res => (
-                                <div key={res._id} style={{padding: '1rem', border: '1px solid var(--border-color)', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                                <div key={res._id} style={{
+                                    padding: '1.25rem', 
+                                    background: 'rgba(0,0,0,0.2)',
+                                    border: '1px solid var(--border-color)', 
+                                    borderRadius: '12px', 
+                                    display: 'flex', 
+                                    justifyContent: 'space-between', 
+                                    alignItems: 'center',
+                                    transition: 'transform 0.2s',
+                                }}
+                                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                                     <div>
-                                        <strong>Date:</strong> {res.date} <br/>
-                                        <strong>Time:</strong> {res.timeSlot} <br/>
-                                        <strong>Table:</strong> {res.table?.tableNumber} ({res.guests} guests)
+                                        <div style={{fontWeight: '600', marginBottom: '0.5rem', color: 'var(--primary-color)'}}>
+                                            Table {res.table?.tableNumber}
+                                        </div>
+                                        <div style={{color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '0.25rem'}}>
+                                            <span style={{marginRight: '1rem'}}>📅 {res.date}</span>
+                                            <span>👥 {res.guests} Guests</span>
+                                        </div>
+                                        <div>
+                                            <span className="status-pill success">{res.timeSlot}</span>
+                                        </div>
                                     </div>
                                     <button className="btn btn-danger" onClick={() => handleCancel(res._id)}>Cancel</button>
                                 </div>
